@@ -1,0 +1,22 @@
+{
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "preserveConstEnums": true,
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noImplicitAny": false
+  },
+  "include": [
+    "pages",
+    "util/provider.tsx",
+    "util/firebaseClient.ts",
+    "util/useAuth.ts",
+    "util/hasuraProvider.tsx"
+  ],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
