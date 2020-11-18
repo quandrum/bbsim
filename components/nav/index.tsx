@@ -9,14 +9,8 @@ const Navigation: React.FC = () => {
   return (
     <nav className="flex items-center justify-between p-8 bg-white">
       <div>Basketball Sim</div>
-      <div>
+      <div className="flex mt-5 lg:mt-0 lg:ml-4">
         {user && <span>{user.email}</span>}
-        {!user && (
-          <>
-            <Button action={() => router.push('/signin')} text="Sign In" />
-            <Button action={() => router.push('/signup')} text="Sign Up" />
-          </>
-        )}
         {logout && <Button action={() => logout()} text="Sign Out" />}
       </div>
     </nav>

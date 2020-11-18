@@ -2,21 +2,30 @@ import nookies from 'nookies';
 import { createContext, useEffect, useState } from 'react';
 import { firebase } from './firebaseClient';
 
+export enum AuthState {
+  LOADING,
+  IN,
+  OUT,
+}
+
 type userState = {
+  state: AuthState;
   user?: firebase.User;
   token?: string;
   logout?: () => void;
 };
 
-const AuthContext = createContext<userState>({});
+const AuthContext = createContext<userState>({ state: AuthState.LOADING });
 
 const AuthProvider = ({ children }: any) => {
-  const [user, setUser] = useState<userState>({});
+  const [user, setUser] = useState<userState>({
+    state: AuthState.LOADING,
+  });
 
   useEffect(() => {
     return firebase.auth().onIdTokenChanged(async (user) => {
       if (!user) {
-        setUser({});
+        setUser({ state: AuthState.OUT });
         nookies.set(null, 'token', '', {});
         return;
       }
@@ -24,7 +33,12 @@ const AuthProvider = ({ children }: any) => {
       const token = await user.getIdToken();
       const idTokenResult = await user.getIdTokenResult();
 
-      setUser({ user, token, logout: () => firebase.auth().signOut() });
+      setUser({
+        user,
+        token,
+        logout: () => firebase.auth().signOut(),
+        state: AuthState.IN,
+      });
       nookies.set(null, 'token', token, {});
     });
   }, []);

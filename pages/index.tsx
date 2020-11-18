@@ -1,14 +1,19 @@
 import Head from 'next/head';
 import LeaguesOverview from '../components/league_overview';
+import { useProtectedAuth } from '../util/useAuth';
+import Navigation from '../components/nav';
+
 export default function Home() {
+  useProtectedAuth();
+
   return (
-    <div>
+    <div className="bg-gray-200">
       <Head>
         <title>BB Sim</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className="container mx-auto bg-grey-100">
+      <Navigation />
+      <main>
         <LeaguesOverview />
       </main>
 
