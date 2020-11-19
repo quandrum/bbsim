@@ -15,28 +15,18 @@ const login: React.FC<loginProps> = () => {
     remember?: boolean;
   }>({});
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState();
 
-  const submit = useCallback(
-    (e) => {
-      if (form.remember) {
-        firebase
-          .auth()
-          .setPersistence(
-            form.remember
-              ? firebase.auth.Auth.Persistence.LOCAL
-              : firebase.auth.Auth.Persistence.SESSION
-          );
-      }
-      if (!form.name || !form.pass) {
-        return;
-      }
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(form.name, form.pass)
-        .then(() => router.push('/'));
-    },
-    [form]
-  );
+  const submit = useCallback(() => {
+    if (!form.name || !form.pass) {
+      return;
+    }
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(form.name, form.pass)
+      .then(() => router.push('/'))
+      .catch(setError);
+  }, [form]);
 
   return (
     <>
@@ -46,7 +36,10 @@ const login: React.FC<loginProps> = () => {
       <div className="flex justify-center pt-32">
         <div className="flex flex-col items-center w-full bg-gray-900 rounded-lg xlg:w-1/2 lg:1/3 md:w-3/5">
           <h1 className="my-10 text-2xl font-bold text-white"> Login </h1>
-          <form className="flex flex-col w-8/12 mt-2 lg:w-1/2">
+          <form
+            onSubmit={submit}
+            className="flex flex-col w-8/12 mt-2 lg:w-1/2"
+          >
             <div className="relative flex flex-wrap items-center w-full pr-10 mb-6 bg-white rounded h-15">
               <div className="flex justify-center p-4 -mr-px w-15">
                 <span className="flex items-center px-3 text-2xl leading-normal text-gray-600 bg-white border-0 rounded rounded-r-none">
@@ -115,32 +108,5 @@ const login: React.FC<loginProps> = () => {
       </div>
     </>
   );
-  {
-    /* <div>
-      <label htmlFor="username">Username</label>
-      <input
-        type="text"
-        name="username"
-        required
-        onChange={(e) => setForm({ ...form, name: e.currentTarget.value })}
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        required
-        onChange={(e) => setForm({ ...form, pass: e.currentTarget.value })}
-      />
-      <label htmlFor="remember_me">Remember me?</label>
-      <input
-        type="checkbox"
-        name="remember_me"
-        onClick={(e) => setForm({ ...form, remember: e.currentTarget.checked })}
-      />
-      <button type="submit" onClick={submit}>
-        Login
-      </button>
-    </div> */
-  }
 };
 export default login;
