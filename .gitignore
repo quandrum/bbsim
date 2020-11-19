@@ -37,5 +37,4 @@ yarn-error.log*
 .vercel
 
 # secrets
-secrets.json
-pages/api/util/secrets-admin.json
+secrets-admin.json

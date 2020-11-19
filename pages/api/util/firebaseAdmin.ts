@@ -1,14 +1,13 @@
 import * as firebaseAdmin from 'firebase-admin';
-import serviceAccount from './secrets-admin.json';
 
 if (!firebaseAdmin.apps.length) {
   firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert({
-      privateKey: serviceAccount.private_key,
-      clientEmail: serviceAccount.client_email,
-      projectId: serviceAccount.project_id,
+      privateKey: process.env.PRIVATE_KEY,
+      clientEmail: process.env.CLIENT_EMAIL,
+      projectId: process.env.PROJECT_ID,
     }),
-    databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`,
+    databaseURL: `https://${process.env.PROJECT_ID}.firebaseio.com`,
   });
 }
 
