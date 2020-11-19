@@ -9,7 +9,7 @@
     "lint": "eslint --ext .ts,.tsx"
   },
   "dependencies": {
-    "@apollo/client": "3.2.5",
+    "@apollo/client": "3.2.7",
     "firebase": "8.0.2",
     "firebase-admin": "9.4.1",
     "folktale": "2.3.2",
