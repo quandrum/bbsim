@@ -44,7 +44,7 @@ const login: React.FC<loginProps> = () => {
         <title>Login | Basketball Sim</title>
       </Head>
       <div className="flex justify-center pt-32">
-        <div className="flex flex-col items-center bg-gray-900 rounded-lg lg:w-1/2 md:w-3/5">
+        <div className="flex flex-col items-center w-full bg-gray-900 rounded-lg xlg:w-1/2 lg:1/3 md:w-3/5">
           <h1 className="my-10 text-2xl font-bold text-white"> Login </h1>
           <form className="flex flex-col w-8/12 mt-2 lg:w-1/2">
             <div className="relative flex flex-wrap items-center w-full pr-10 mb-6 bg-white rounded h-15">
@@ -87,24 +87,26 @@ const login: React.FC<loginProps> = () => {
                 </button>
               </div>
             </div>
-            <a
-              href="#"
-              className="mb-6 text-base leading-normal text-left text-white font-roboto hover:underline"
-              onClick={() => router.push('/signup')}
-            >
-              Sign up
-            </a>
-            <a
-              href="#"
-              className="mb-6 text-base leading-normal text-right text-white font-roboto hover:underline"
-              onClick={() => router.push('/forgot')}
-            >
-              Forget Password ?
-            </a>
+            <div className="flex content-space-between">
+              <a
+                href="#"
+                className="mb-6 mr-auto text-base leading-normal text-white font-roboto hover:underline"
+                onClick={() => router.push('/signup')}
+              >
+                Sign up
+              </a>
+              <a
+                href="#"
+                className="mb-6 text-base leading-normal text-white font-roboto hover:underline"
+                onClick={() => router.push('/forgot')}
+              >
+                Forget Password ?
+              </a>
+            </div>
             <button
               type="submit"
               onClick={submit}
-              className="py-4 mt-4 mb-20 font-sans text-xl leading-tight text-center text-white bg-orange-400 rounded px-17 md:px-12 md:py-4 md:text-base"
+              className="py-4 mt-4 mb-20 font-sans text-xl leading-tight text-center text-white bg-yellow-600 rounded px-17 md:px-12 md:py-4 md:text-base"
             >
               Login
             </button>

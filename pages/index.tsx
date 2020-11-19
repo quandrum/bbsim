@@ -4,7 +4,7 @@ import { useProtectedAuth } from '../util/useAuth';
 import Navigation from '../components/nav';
 
 export default function Home() {
-  useProtectedAuth();
+  const auth = useProtectedAuth();
 
   return (
     <div className="bg-gray-200">
