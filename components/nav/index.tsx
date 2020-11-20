@@ -11,7 +11,7 @@ const Navigation: React.FC = () => {
       <div>Basketball Sim</div>
       <div className="flex mt-5 lg:mt-0 lg:ml-4">
         {user && <span>{user.email}</span>}
-        {logout && <Button action={() => logout()} text="Sign Out" />}
+        {logout && <Button onClick={() => logout()} text="Sign Out" />}
       </div>
     </nav>
   );

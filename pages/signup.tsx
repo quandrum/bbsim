@@ -11,31 +11,44 @@ const SignUp: React.FC = () => {
     pass?: string;
   }>({});
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState<firebase.auth.Error>();
+  const [saving, setSaving] = useState<boolean>(false);
 
   const submit = useCallback(
     async (e) => {
+      e.preventDefault();
       if (!form.name || !form.pass) {
         return;
       }
-      const { user } = await firebase
-        .auth()
-        .createUserWithEmailAndPassword(form.name, form.pass);
+      setSaving(true);
+      try {
+        const { user } = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(form.name, form.pass);
 
-      const token = await user?.getIdToken();
+        const token = await user?.getIdToken();
 
-      const res = await fetch('/api/user/create', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+        const res = await fetch('/api/user/create', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-      if (res.ok) {
-        /// Force update to get claims
-        await user?.getIdToken(true);
-
-        router.push('/');
+        if (res.ok) {
+          /// Force update to get claims
+          await user?.getIdToken(true);
+          router.push('/');
+        } else {
+          setSaving(false);
+          setError({
+            message: 'Something unexpected happened',
+            code: 'unknown',
+          });
+        }
+      } catch (e) {
+        setSaving(false);
+        setError(e);
       }
     },
     [form]
@@ -97,9 +110,14 @@ const SignUp: React.FC = () => {
                 </button>
               </div>
             </div>
+            {error?.message && (
+              <div className="text-red-500">{error.message}</div>
+            )}
+
             <button
               type="submit"
               onClick={submit}
+              disabled={saving}
               className="py-4 mt-4 mb-20 font-sans text-xl leading-tight text-center text-white bg-yellow-600 rounded px-17 md:px-12 md:py-4 md:text-base"
             >
               Sign Up

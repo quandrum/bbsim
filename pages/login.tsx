@@ -4,9 +4,8 @@ import { useRouter } from 'next/router';
 import { Lock, User, EyeOff, Eye } from 'react-feather';
 import Head from 'next/head';
 
-type loginProps = {};
-
-const login: React.FC<loginProps> = () => {
+// Todo actually handle errors
+const login: React.FC = () => {
   const router = useRouter();
 
   const [form, setForm] = useState<{
@@ -15,7 +14,7 @@ const login: React.FC<loginProps> = () => {
     remember?: boolean;
   }>({});
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState<firebase.auth.Error>();
 
   const submit = useCallback(
     (e) => {
@@ -104,6 +103,9 @@ const login: React.FC<loginProps> = () => {
                 Forget Password ?
               </a>
             </div>
+            {error?.message && (
+              <div className="text-red-500">{error.message}</div>
+            )}
             <button
               type="submit"
               onClick={submit}

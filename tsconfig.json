@@ -11,12 +11,6 @@
     "isolatedModules": true,
     "noImplicitAny": false
   },
-  "include": [
-    "pages",
-    "util/provider.tsx",
-    "util/firebaseClient.ts",
-    "util/useAuth.ts",
-    "util/hasuraProvider.tsx"
-  ],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": ["components", "pages", "util"],
+  "exclude": ["**/*.test.ts"]
 }

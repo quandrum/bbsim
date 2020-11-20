@@ -12,7 +12,7 @@ export default function Home() {
         <title>BB Sim</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navigation />
+      <div className="flex flex-column"></div>
       <main>
         <LeaguesOverview />
       </main>

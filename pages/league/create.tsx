@@ -9,7 +9,7 @@ const CreateLeague: React.FC = () => {
   const [addLeague, { data, loading }] = useMutation(CREATE_LEAGUE);
   return (
     <Button
-      action={() =>
+      onClick={() =>
         addLeague({ variables: { name: `Test league`, creatorId: user?.uid } })
       }
       text="create"

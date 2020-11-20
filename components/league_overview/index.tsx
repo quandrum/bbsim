@@ -15,7 +15,7 @@ const LeaguesOverview: React.FC = () => {
     <div>
       <h1>Leagues</h1>
       {data.leagues.length === 0 && <div>No Leagues found!</div>}
-      <Button action={() => router.push('/league/create')} text={'Create'} />
+      <Button onClick={() => router.push('/league/create')} text={'Create'} />
     </div>
   );
 };
