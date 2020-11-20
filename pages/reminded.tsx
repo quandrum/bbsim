@@ -6,17 +6,6 @@ import { firebase } from '../util/firebaseClient';
 
 const Reminded: React.FC = () => {
   const router = useRouter();
-  const [username, setUsername] = useState<string>();
-  const submit = useCallback(() => {
-    if (!username) {
-      return;
-    }
-    firebase
-      .auth()
-      .sendPasswordResetEmail(username)
-      .then(() => router.push('/reminded'));
-  }, [username]);
-
   return (
     <>
       <Head>

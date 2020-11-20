@@ -17,16 +17,20 @@ const login: React.FC<loginProps> = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState();
 
-  const submit = useCallback(() => {
-    if (!form.name || !form.pass) {
-      return;
-    }
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(form.name, form.pass)
-      .then(() => router.push('/'))
-      .catch(setError);
-  }, [form]);
+  const submit = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (!form.name || !form.pass) {
+        return;
+      }
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(form.name, form.pass)
+        .then(() => router.push('/'))
+        .catch(setError);
+    },
+    [form]
+  );
 
   return (
     <>
@@ -50,7 +54,7 @@ const login: React.FC<loginProps> = () => {
                 type="text"
                 autoComplete="username"
                 className="relative self-center flex-1 flex-grow flex-shrink w-px h-10 px-3 text-xl leading-normal border-0 rounded rounded-l-none outline-none border-grey-light font-roboto"
-                placeholder="Username"
+                placeholder="Email"
                 onChange={(e) =>
                   setForm({ ...form, name: e.currentTarget.value })
                 }
@@ -73,7 +77,11 @@ const login: React.FC<loginProps> = () => {
               />
               <div className="flex">
                 <button
-                  onClick={() => setShowPassword(!showPassword)}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowPassword(!showPassword);
+                  }}
                   className="flex items-center px-4 text-gray-600 whitespace-no-wrap bg-white border-0 rounded rounded-l-none leadng-normal focus:outline-none"
                 >
                   {showPassword ? <Eye /> : <EyeOff />}
