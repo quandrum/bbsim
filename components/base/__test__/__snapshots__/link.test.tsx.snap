@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link renders 1`] = `"<a href=\\"#\\" class=\\"mb-6 mr-auto text-base leading-normal text-white font-roboto hover:underline\\">test</a>"`;

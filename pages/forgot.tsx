@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { User } from 'react-feather';
 import { firebase } from '../util/firebaseClient';
+import { Button } from '../components/base';
 
 const ForgetYourPassword: React.FC = () => {
   const router = useRouter();
@@ -49,13 +50,9 @@ const ForgetYourPassword: React.FC = () => {
                 onChange={(e) => setUsername(e.currentTarget.value)}
               />
             </div>
-            <button
-              type="submit"
-              onClick={submit}
-              className="py-4 mt-4 mb-20 font-sans text-xl leading-tight text-center text-white bg-yellow-600 rounded px-17 md:px-12 md:py-4 md:text-base"
-            >
+            <Button type="submit" onClick={submit}>
               Send Password Reset
-            </button>
+            </Button>
           </form>
         </div>
       </div>

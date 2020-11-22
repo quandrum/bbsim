@@ -12,8 +12,9 @@ const CreateLeague: React.FC = () => {
       onClick={() =>
         addLeague({ variables: { name: `Test league`, creatorId: user?.uid } })
       }
-      text="create"
-    />
+    >
+      Create
+    </Button>
   );
 };
 
