@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { User } from 'react-feather';
 import { firebase } from '../util/firebaseClient';
-import { Button } from '../components/base';
+import { Button, Input } from '../components/base';
 
 const ForgetYourPassword: React.FC = () => {
   const router = useRouter();
@@ -36,20 +36,14 @@ const ForgetYourPassword: React.FC = () => {
             onSubmit={submit}
             className="flex flex-col w-8/12 mt-2 lg:w-1/2"
           >
-            <div className="relative flex flex-wrap items-center w-full pr-10 mb-6 bg-white rounded h-15">
-              <div className="flex justify-center p-4 -mr-px w-15">
-                <span className="flex items-center px-3 text-2xl leading-normal text-gray-600 bg-white border-0 rounded rounded-r-none">
-                  <User />
-                </span>
-              </div>
-              <input
-                type="text"
-                autoComplete="username"
-                className="relative self-center flex-1 flex-grow flex-shrink w-px h-10 px-3 text-xl leading-normal border-0 rounded rounded-l-none outline-none border-grey-light font-roboto"
-                placeholder="Username"
-                onChange={(e) => setUsername(e.currentTarget.value)}
-              />
-            </div>
+            <Input
+              preIcon={<User />}
+              type="text"
+              autoComplete="username"
+              className="relative self-center flex-1 flex-grow flex-shrink w-px h-10 px-3 text-xl leading-normal border-0 rounded rounded-l-none outline-none border-grey-light font-roboto"
+              placeholder="Username"
+              onChange={(e) => setUsername(e.currentTarget.value)}
+            />
             <Button type="submit" onClick={submit}>
               Send Password Reset
             </Button>

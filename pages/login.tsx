@@ -54,34 +54,30 @@ const login: React.FC = () => {
                 setForm({ ...form, name: e.currentTarget.value })
               }
             />
-            <div className="relative flex flex-wrap items-center w-full mb-4 bg-white rounded h-15">
-              <div className="flex justify-center p-4 -mr-px w-15">
-                <span className="flex items-center px-3 text-xl leading-normal text-gray-600 whitespace-no-wrap bg-white rounded rounded-r-none">
-                  <Lock />
-                </span>
-              </div>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                autoComplete="current-password"
-                className="relative self-center flex-1 flex-grow flex-shrink w-px h-10 px-3 text-xl leading-normal border-0 outline-none font-roboto"
-                placeholder="Password"
-                onChange={(e) =>
-                  setForm({ ...form, pass: e.currentTarget.value })
-                }
-              />
-              <div className="flex">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setShowPassword(!showPassword);
-                  }}
-                  className="flex items-center px-4 text-gray-600 whitespace-no-wrap bg-white border-0 rounded rounded-l-none leadng-normal focus:outline-none"
-                >
-                  {showPassword ? <Eye /> : <EyeOff />}
-                </button>
-              </div>
-            </div>
+            <Input
+              preIcon={<Lock />}
+              type={showPassword ? 'text' : 'password'}
+              autoComplete="current-password"
+              className="relative self-center flex-1 flex-grow flex-shrink w-px h-10 px-3 text-xl leading-normal border-0 outline-none font-roboto"
+              placeholder="Password"
+              onChange={(e) =>
+                setForm({ ...form, pass: e.currentTarget.value })
+              }
+              postIcon={
+                <div className="flex">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowPassword(!showPassword);
+                    }}
+                    className="flex items-center px-4 text-gray-600 whitespace-no-wrap bg-white border-0 rounded rounded-l-none leadng-normal focus:outline-none"
+                  >
+                    {showPassword ? <Eye /> : <EyeOff />}
+                  </button>
+                </div>
+              }
+            />
             <div className="flex content-space-between">
               <Link onClick={() => router.push('/signup')}>Sign Up</Link>
               <Link onClick={() => router.push('/forgot')}>
