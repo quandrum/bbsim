@@ -1,13 +1,18 @@
 import { AnchorHTMLAttributes } from 'react';
+import cx from 'classnames';
 
-// TODO turn in button for a11y
+// TODO turn into button for a11y
 export const Link: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
   onClick,
   children,
+  className,
 }) => (
   <a
     href="#"
-    className="mb-6 mr-auto text-base leading-normal text-white font-roboto hover:underline"
+    className={cx(
+      'mb-6 text-base leading-normal text-white font-roboto hover:underline',
+      className
+    )}
     onClick={onClick}
   >
     {children}
