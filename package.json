@@ -11,7 +11,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@apollo/client": "3.3.4",
+    "@apollo/client": "3.3.6",
     "classnames": "2.2.6",
     "firebase": "8.2.0",
     "firebase-admin": "9.4.2",
