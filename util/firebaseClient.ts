@@ -3,6 +3,7 @@ import 'firebase/auth';
 import config from '../config.json';
 
 if (typeof window !== 'undefined' && !firebase.apps.length) {
+  console.log('starting firebase app', +config.projectId);
   firebase.initializeApp({
     apiKey: config.apiKey,
     authDomain: `${config.projectId}.firebaseapp.com`,
