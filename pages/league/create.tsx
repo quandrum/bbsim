@@ -6,7 +6,7 @@ import { useAuth } from '../../util/useAuth';
 
 const CreateLeague: React.FC = () => {
   const { user } = useAuth();
-  const [addLeague, { data, loading }] = useMutation(CREATE_LEAGUE);
+  const [addLeague] = useMutation(CREATE_LEAGUE);
   return (
     <Button
       onClick={() =>

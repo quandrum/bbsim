@@ -60,7 +60,7 @@ const login: React.FC = () => {
                     e.preventDefault();
                     setShowPassword(!showPassword);
                   }}
-                  className="flex items-center px-4 text-gray-600 whitespace-no-wrap bg-white border-0 rounded rounded-l-none leadng-normal focus:outline-none"
+                  className="flex items-center px-4 text-gray-600 whitespace-no-wrap bg-white border-0 rounded rounded-l-none leading-normal focus:outline-none"
                 >
                   {showPassword ? <Eye /> : <EyeOff />}
                 </button>
