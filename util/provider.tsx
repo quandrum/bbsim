@@ -31,7 +31,6 @@ const AuthProvider = ({ children }: any) => {
       }
 
       const token = await user.getIdToken();
-      const idTokenResult = await user.getIdTokenResult();
 
       setUser({
         user,

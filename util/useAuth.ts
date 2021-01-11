@@ -14,7 +14,7 @@ const useProtectedAuth = () => {
     if (auth.state === AuthState.OUT) {
       router.push('/login');
     }
-  }, [auth?.user]);
+  }, [auth?.state]);
 
   return auth;
 };
