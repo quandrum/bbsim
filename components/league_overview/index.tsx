@@ -5,7 +5,7 @@ import { Button } from '../base';
 
 type League = {
   name: string;
-  uuid: string;
+  id: string;
 };
 type LeagueData = {
   leagues: League[];
@@ -24,7 +24,10 @@ const LeaguesOverview: React.FC = () => {
       {!data || (data.leagues.length === 0 && <div>No Leagues found!</div>)}
       {data &&
         data.leagues.map((league) => (
-          <Button onClick={() => router.push(`/league/${league.uuid}`)}>
+          <Button
+            key={league.id}
+            onClick={() => router.push(`/league/${league.id}`)}
+          >
             {league.name}
           </Button>
         ))}
