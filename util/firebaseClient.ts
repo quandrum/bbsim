@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import config from './config.json';
+import config from './config';
 
 if (typeof window !== 'undefined' && !firebase.apps.length) {
   console.log('starting firebase app', +config.projectId);
