@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex flex-column"></div>
-      <main>
+      <main className="h-5/6">
         <LeaguesOverview />
       </main>
 
