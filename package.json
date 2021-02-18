@@ -13,7 +13,7 @@
   "dependencies": {
     "@apollo/client": "3.3.11",
     "classnames": "2.2.6",
-    "firebase": "8.2.7",
+    "firebase": "8.2.8",
     "firebase-admin": "9.5.0",
     "folktale": "2.3.2",
     "formik": "2.2.6",
