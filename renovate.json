@@ -1,9 +1,20 @@
 {
   "extends": ["config:base"],
-  "packageRules": [
-    {
-      "updateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
-    }
-  ]
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "minor": {
+    "automerge": true
+  },
+  "separateMultipleMajor": true,
+  "node": {
+    "supportPolicy": ["active"]
+  },
+  "labels": ["dependencies", "renovate"],
+  "prCreation": "not-pending",
+  "stabilityDays": 3,
+  "prHourlyLimit": 5,
+  "prConcurrentLimit": 2,
+  "rebaseStalePrs": true
 }

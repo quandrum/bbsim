@@ -1,31 +1,44 @@
 import { useMutation } from '@apollo/client';
-
+import { Field, Formik, FormikHelpers } from 'formik';
+import { useRouter } from 'next/router';
+import { Button } from '../../components/base';
 import { CREATE_LEAGUE } from '../../queries';
-import { Button, Input } from '../../components/base';
 import { useAuth } from '../../util/useAuth';
-import { useCallback, useState } from 'react';
-import { Circle } from 'react-feather';
+
+const initialValues = {
+  name: '',
+  year: new Date().getFullYear(),
+};
+
+interface League {
+  name: string;
+  year: number;
+}
 
 const CreateLeague: React.FC = () => {
   const { user } = useAuth();
-  const [league, setLeague] = useState({});
   const [addLeague] = useMutation(CREATE_LEAGUE);
-  const submit = useCallback(
-    (e) => {
-      e.preventDefault();
-      addLeague({ variables: { creatorId: user?.uid, ...league } });
-    },
-    [league]
-  );
+  const router = useRouter();
+
+  const onSubmit = async (values: League, actions: FormikHelpers<League>) => {
+    const { data, errors } = await addLeague({
+      variables: { creatorId: user?.uid, ...values },
+    });
+    router.push(`/league/${data.league.id}`);
+  };
+
   return (
-    <form onSubmit={submit}>
-      <Input
-        placeholder="League Name"
-        onChange={(e) => setLeague({ name: e.currentTarget.value, ...league })}
-        preIcon={<Circle />}
-      />
-      <Button onClick={submit}>Create</Button>
-    </form>
+    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      {({ handleSubmit }) => (
+        <>
+          <Field name="name" placeholder="League Name" />;
+          <Field type="number" name="year" step="1" placeholder="Start Year" />
+          <Button type="submit" onClick={() => handleSubmit()}>
+            Create
+          </Button>
+        </>
+      )}
+    </Formik>
   );
 };
 
