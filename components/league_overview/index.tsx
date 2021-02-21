@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { GET_MY_LEAGUES } from '../../queries';
 import { Button } from '../base';
@@ -20,16 +21,14 @@ const LeaguesOverview: React.FC = () => {
 
   return (
     <div>
-      <h1>Leagues</h1>
       {!data || (data.leagues.length === 0 && <div>No Leagues found!</div>)}
       {data &&
         data.leagues.map((league) => (
-          <Button
-            key={league.id}
-            onClick={() => router.push(`/league/${league.id}`)}
-          >
-            {league.name}
-          </Button>
+          <div>
+            <Link href={`/league/${league.id}`}>
+              <a>{league.name}</a>
+            </Link>
+          </div>
         ))}
       <Button onClick={() => router.push('/league/create')}>Create</Button>
     </div>

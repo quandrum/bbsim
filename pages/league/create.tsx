@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
 import { Field, Formik, FormikHelpers } from 'formik';
 import { useRouter } from 'next/router';
-import { Button } from '../../components/base';
+import { Button, InputField } from '../../components/base';
 import { CREATE_LEAGUE } from '../../queries';
 import { useAuth } from '../../util/useAuth';
 import * as Yup from 'yup';
@@ -37,23 +37,39 @@ const CreateLeague: React.FC = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={schema}
-    >
-      {({ errors, touched, handleSubmit }) => (
-        <>
-          <Field name="name" placeholder="League Name" />;
-          {errors.name && touched.name && <div>{errors.name}</div>}
-          <Field type="number" name="year" step="1" placeholder="Start Year" />
-          {errors.year && touched.year && <div>{errors.year}</div>}
-          <Button type="submit" onClick={() => handleSubmit()}>
-            Create
-          </Button>
-        </>
-      )}
-    </Formik>
+    <div className="container mx-auto px-24">
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={schema}
+      >
+        {({ errors, touched, handleSubmit }) => (
+          <>
+            <InputField
+              id="league-name"
+              type="text"
+              name="name"
+              placeholder="Your Awesome League"
+              label="League Name"
+            />
+            {errors.name && touched.name && <div>{errors.name}</div>}
+            <InputField
+              id="league-year"
+              type="number"
+              name="year"
+              step="1"
+              label="Inaugural Year"
+            />
+            {errors.year && touched.year && <div>{errors.year}</div>}
+            <div>
+              <Button type="submit" onClick={() => handleSubmit()}>
+                Create
+              </Button>
+            </div>
+          </>
+        )}
+      </Formik>
+    </div>
   );
 };
 

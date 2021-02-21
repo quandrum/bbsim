@@ -1,4 +1,4 @@
-import { FormEventHandler, ReactNode, InputHTMLAttributes } from 'react';
+import { ReactNode, InputHTMLAttributes } from 'react';
 
 type InputProps = {
   preIcon: ReactNode;

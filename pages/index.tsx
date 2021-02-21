@@ -7,7 +7,7 @@ export default function Home() {
   const auth = useProtectedAuth();
 
   return (
-    <div className="bg-gray-200">
+    <div>
       <Head>
         <title>BB Sim</title>
         <link rel="icon" href="/favicon.ico" />
@@ -16,10 +16,6 @@ export default function Home() {
       <main className="h-5/6">
         <LeaguesOverview />
       </main>
-
-      <footer className="flex items-center justify-center p-8">
-        Adam made this
-      </footer>
     </div>
   );
 }
