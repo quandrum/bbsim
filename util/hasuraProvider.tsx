@@ -1,11 +1,13 @@
 import {
   ApolloClient,
   InMemoryCache,
+  from,
   split,
   HttpLink,
   ApolloProvider,
 } from '@apollo/client';
 import { WebSocketLink } from '@apollo/client/link/ws';
+import { onError } from '@apollo/client/link/error';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { useAuth } from './useAuth';
 
@@ -45,8 +47,19 @@ export const HasuraProvider = ({ children }) => {
     link = httpLink;
   }
 
+  const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors)
+      graphQLErrors.forEach(({ message, locations, path }) =>
+        console.log(
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+        )
+      );
+
+    if (networkError) console.log(`[Network error]: ${networkError}`);
+  });
+
   const client = new ApolloClient({
-    link,
+    link: from([errorLink, link]),
     cache: new InMemoryCache(),
   });
 

@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
+import Spinner from '../../components/base/spinner';
 import { GET_ONE_LEAGUE } from '../../queries';
 
 const ViewLeague: React.FC = () => {
@@ -10,7 +11,7 @@ const ViewLeague: React.FC = () => {
   });
 
   if (loading) {
-    return <h1>loading</h1>;
+    return <Spinner />;
   }
 
   if (error) {

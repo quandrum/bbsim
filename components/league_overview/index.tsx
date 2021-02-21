@@ -24,7 +24,7 @@ const LeaguesOverview: React.FC = () => {
       {!data || (data.leagues.length === 0 && <div>No Leagues found!</div>)}
       {data &&
         data.leagues.map((league) => (
-          <div>
+          <div key={league.id}>
             <Link href={`/league/${league.id}`}>
               <a>{league.name}</a>
             </Link>
