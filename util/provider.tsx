@@ -1,6 +1,7 @@
 import nookies from 'nookies';
 import { createContext, useEffect, useState } from 'react';
 import { firebase } from './firebaseClient';
+import LogRocket from 'logrocket';
 
 export enum AuthState {
   LOADING,
@@ -31,6 +32,8 @@ const AuthProvider = ({ children }: any) => {
       }
 
       const token = await user.getIdToken();
+
+      LogRocket.identify(user.uid);
 
       setUser({
         user,
