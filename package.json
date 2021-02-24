@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.12.17",
-    "@fullhuman/postcss-purgecss": "4.0.0",
+    "@fullhuman/postcss-purgecss": "4.0.2",
     "@testing-library/dom": "7.29.6",
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "11.2.5",
