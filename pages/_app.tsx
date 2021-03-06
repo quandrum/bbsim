@@ -5,6 +5,7 @@ import { HasuraProvider } from '../util/hasuraProvider';
 import { AuthProvider } from '../util/provider';
 import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
+import { ReactElement } from 'react';
 
 // only initialize when in the browser
 if (typeof window !== 'undefined') {
@@ -13,7 +14,7 @@ if (typeof window !== 'undefined') {
   setupLogRocketReact(LogRocket);
 }
 
-function BBSim({ Component, pageProps }: AppProps) {
+function BBSim({ Component, pageProps }: AppProps): ReactElement {
   return (
     <AuthProvider>
       <HasuraProvider>

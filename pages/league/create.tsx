@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client';
-import { Field, Formik, FormikHelpers } from 'formik';
+import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { Button, InputField } from '../../components/base';
 import { CREATE_LEAGUE } from '../../queries';
@@ -29,8 +29,8 @@ const CreateLeague: React.FC = () => {
   const [addLeague] = useMutation(CREATE_LEAGUE);
   const router = useRouter();
 
-  const onSubmit = async (values: League, actions: FormikHelpers<League>) => {
-    const { data, errors } = await addLeague({
+  const onSubmit = async (values: League) => {
+    const { data } = await addLeague({
       variables: { creatorId: user?.uid, ...values },
     });
     router.push(`/league/${data.league.id}`);

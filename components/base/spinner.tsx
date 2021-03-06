@@ -1,6 +1,7 @@
-const styles = require('./spinner.module.css');
+import { ReactElement } from 'react';
+import styles from './spinner.module.css';
 
-export default function Spinner() {
+export default function Spinner(): ReactElement {
   return (
     <div
       className={

@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
 
-import { AuthContext, AuthState } from './provider';
+import { AuthContext, AuthState, UserState } from './provider';
 
-const useAuth = () => {
+const useAuth = (): UserState => {
   return useContext(AuthContext);
 };
 
-const useProtectedAuth = () => {
+const useProtectedAuth = (): UserState => {
   const router = useRouter();
   const auth = useContext(AuthContext);
   useEffect(() => {

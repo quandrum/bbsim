@@ -10,8 +10,13 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 import { onError } from '@apollo/client/link/error';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { useAuth } from './useAuth';
+import { ReactChild, ReactElement } from 'react';
 
-export const HasuraProvider = ({ children }) => {
+type Props = {
+  children: ReactChild;
+};
+
+export const HasuraProvider = ({ children }: Props): ReactElement => {
   const { token } = useAuth();
   const headers = token ? { Authorization: `Bearer ${token}` } : {};
 

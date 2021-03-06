@@ -1,5 +1,11 @@
 import nookies from 'nookies';
-import { createContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  ReactChild,
+  ReactElement,
+  useEffect,
+  useState,
+} from 'react';
 import { firebase } from './firebaseClient';
 import LogRocket from 'logrocket';
 
@@ -9,17 +15,21 @@ export enum AuthState {
   OUT,
 }
 
-type userState = {
+export type UserState = {
   state: AuthState;
   user?: firebase.User;
   token?: string;
   logout?: () => void;
 };
 
-const AuthContext = createContext<userState>({ state: AuthState.LOADING });
+const AuthContext = createContext<UserState>({ state: AuthState.LOADING });
 
-const AuthProvider = ({ children }: any) => {
-  const [user, setUser] = useState<userState>({
+type Props = {
+  children: ReactChild;
+};
+
+const AuthProvider = ({ children }: Props): ReactElement => {
+  const [user, setUser] = useState<UserState>({
     state: AuthState.LOADING,
   });
 

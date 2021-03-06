@@ -2,10 +2,10 @@ import { Field } from 'formik';
 import { ReactNode, InputHTMLAttributes } from 'react';
 
 type InputProps = {
-  label: string;
+  label: String;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-export const InputField: React.FC<InputProps> = ({ label, ...props }) => (
+export const InputField = ({ label = "", ...props }: InputProps): JSX.Element => (
   <div>
     <label htmlFor="price" className="block text-sm font-medium text-gray-700">
       {label}

@@ -6,14 +6,13 @@ import useEventListener from '@use-it/event-listener';
 
 const Navigation: React.FC = () => {
   const menu = createRef<HTMLDivElement>();
-  const { user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
 
   if (typeof document != 'undefined') {
     useEventListener(
       'click',
       (event) => {
-        let target = event.target as Node;
+        const target = event.target as Node;
         if (menuOpen && !menu?.current?.contains(target)) {
           setMenuOpen(false);
         }

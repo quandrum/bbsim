@@ -2,11 +2,11 @@ import { AnchorHTMLAttributes } from 'react';
 import cx from 'classnames';
 
 // TODO turn into button for a11y
-export const Link: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
+export const Link = ({
   onClick,
   children,
   className,
-}) => (
+}: AnchorHTMLAttributes<HTMLAnchorElement>): JSX.Element => (
   <a
     href="#"
     className={cx(
