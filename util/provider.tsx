@@ -1,11 +1,5 @@
 import nookies from 'nookies';
-import {
-  createContext,
-  ReactChild,
-  ReactElement,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, ReactChild, useEffect, useState } from 'react';
 import { firebase } from './firebaseClient';
 import LogRocket from 'logrocket';
 
@@ -28,7 +22,7 @@ type Props = {
   children: ReactChild;
 };
 
-const AuthProvider = ({ children }: Props): ReactElement => {
+const AuthProvider = ({ children }: Props): JSX.Element => {
   const [user, setUser] = useState<UserState>({
     state: AuthState.LOADING,
   });

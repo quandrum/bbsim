@@ -1,9 +1,8 @@
 import Head from 'next/head';
 import LeaguesOverview from '../components/league_overview';
 import { useProtectedAuth } from '../util/useAuth';
-import { ReactElement } from 'react';
 
-export default function Home(): ReactElement {
+export default function Home(): JSX.Element {
   useProtectedAuth();
 
   return (
