@@ -1,5 +1,5 @@
 import { Field } from 'formik';
-import { ReactNode, InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 
 type InputProps = {
   label: string;

@@ -1,5 +1,4 @@
 import cx from 'classnames';
-import { useAuth } from '../../util/useAuth';
 import Link from 'next/link';
 import { createRef, useState } from 'react';
 import useEventListener from '@use-it/event-listener';
