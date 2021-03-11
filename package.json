@@ -23,7 +23,7 @@
     "graphql": "15.5.0",
     "logrocket": "1.0.14",
     "logrocket-react": "4.0.1",
-    "micro": "^9.3.4",
+    "micro": "9.3.4",
     "next": "10.0.7",
     "nookies": "2.5.2",
     "react": "17.0.1",
