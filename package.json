@@ -36,7 +36,7 @@
     "@babel/core": "7.13.10",
     "@fullhuman/postcss-purgecss": "4.0.3",
     "@testing-library/dom": "7.30.0",
-    "@testing-library/jest-dom": "5.11.9",
+    "@testing-library/jest-dom": "5.11.10",
     "@testing-library/react": "11.2.5",
     "@tsconfig/recommended": "1.0.1",
     "@types/react": "17.0.3",
