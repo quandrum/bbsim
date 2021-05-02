@@ -33,7 +33,7 @@
     "yup": "0.32.9"
   },
   "devDependencies": {
-    "@babel/core": "7.13.16",
+    "@babel/core": "7.14.0",
     "@fullhuman/postcss-purgecss": "4.0.3",
     "@testing-library/dom": "7.30.4",
     "@testing-library/jest-dom": "5.12.0",
