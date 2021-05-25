@@ -19,7 +19,7 @@
     "firebase": "8.6.2",
     "firebase-admin": "9.8.0",
     "folktale": "2.3.2",
-    "formik": "2.2.6",
+    "formik": "2.2.8",
     "graphql": "15.5.0",
     "logrocket": "1.2.1",
     "logrocket-react": "4.0.1",
